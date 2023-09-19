@@ -21,8 +21,8 @@ public class MainPage {
         return this;
     }
 
-    public MainPage movingMouseToLocator(SelenideElement element) {
-        $(element).hover();
+    public MainPage movingMouseToPersonalAccount() {
+        loginButton.hover();
         return this;
     }
 
@@ -31,13 +31,24 @@ public class MainPage {
         return this;
     }
 
+    public MainPage openPersonalAccount(SelenideElement element) {
+        movingMouseToPersonalAccount();
+        clickToElement(element);
+        return this;
+    }
+
     public MainPage clickOnOverlappedElement(SelenideElement element) {
         Selenide.executeJavaScript("arguments[0].click()", element);
         return this;
     }
 
-    public SelenideElement getLoginButton() {
-        return loginButton;
+    public MainPage clickToQuickSearchMessage(SelenideElement message) {
+        clickOnOverlappedElement(message);
+        return this;
+    }
+
+    public String getActualValueSearchInput() {
+        return searchAutoCompleteInput.getValue();
     }
 
     public SelenideElement getWebBankLoginButton() {
@@ -50,10 +61,6 @@ public class MainPage {
 
     public SelenideElement getInvestmentsLoginButton() {
         return investmentsLoginButton;
-    }
-
-    public SelenideElement getSearchAutoCompleteInput() {
-        return searchAutoCompleteInput;
     }
 
     public ElementsCollection getQuickSearchMessageButtons() {

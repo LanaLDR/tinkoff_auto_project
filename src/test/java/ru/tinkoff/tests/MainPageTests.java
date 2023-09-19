@@ -13,7 +13,6 @@ import ru.tinkoff.pages.MainPage;
 
 import java.util.stream.Stream;
 
-import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
@@ -40,15 +39,12 @@ public class MainPageTests extends TestBase {
         });
 
         step("Открываем личный кабинет", () -> {
-            mainPage.movingMouseToLocator(mainPage.getLoginButton())
-                    .clickToElement(personalAccountLink);
+            mainPage.openPersonalAccount(personalAccountLink);
         });
 
         step("Проверяем, что открылась страница авторизации", () -> {
             switchTo().window(WebDriverRunner.getWebDriver().getWindowHandles().size() - 1);
-            idPage.getLoginFormTitle()
-                    .shouldBe(visible)
-                    .shouldHave(text("Вход в Тинькофф"));
+            idPage.idFormTitleIsVisible();
         });
     }
 
@@ -62,12 +58,12 @@ public class MainPageTests extends TestBase {
         for (SelenideElement messageButton : mainPage.getQuickSearchMessageButtons()) {
             step("Кликаем по кнопке быстрого сообщения", () -> {
                 // метод клика по перекрытому элементу (меню с продуктами не исчезает без доп скрола)
-                mainPage.clickOnOverlappedElement(messageButton);
+                mainPage.clickToQuickSearchMessage(messageButton);
             });
 
             step("Проверяем, что текст быстрого сообщения отобразился в строке поиска", () -> {
                 String messageButtonText = messageButton.getText();
-                String searchInputText = mainPage.getSearchAutoCompleteInput().getValue();
+                String searchInputText = mainPage.getActualValueSearchInput();
                 Assertions.assertEquals(
                         messageButtonText,
                         searchInputText,
