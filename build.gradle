@@ -26,6 +26,7 @@ allure {
 
 dependencies {
     testImplementation(
+            'org.aspectj:aspectjweaver:1.9.20.1',
             'org.junit.jupiter:junit-jupiter:5.9.3',
             'com.codeborne:selenide:6.18.0',
             'com.github.javafaker:javafaker:1.0.2',
@@ -35,4 +36,25 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    systemProperties(System.getProperties())
+}
+
+task smoke_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("smoke")
+    }
+}
+
+task main_page_test(type: Test) {
+    systemProperties(System.getProperties())
+    useJUnitPlatform {
+        includeTags("mainPage")
+    }
+}
+
+task idPage_negative_test(type: Test) {
+    systemProperties(System.getProperties())
+    useJUnitPlatform {
+        includeTags("idPageNegative")
+    }
 }

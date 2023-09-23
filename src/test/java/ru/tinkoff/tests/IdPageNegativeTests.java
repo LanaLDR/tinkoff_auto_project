@@ -1,6 +1,7 @@
 package ru.tinkoff.tests;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -11,6 +12,7 @@ import ru.tinkoff.utils.TestData;
 import java.util.stream.Stream;
 
 
+@Tag("idPageNegative")
 public class IdPageNegativeTests extends TestBase {
 
     IdPage idPage = new IdPage();
@@ -37,6 +39,7 @@ public class IdPageNegativeTests extends TestBase {
     }
 
     @DisplayName("Логин не проходит с некорректным кодом смс")
+    @Tag("smoke")
     @Test
     void loginFailWithIncorrectSms() {
         idPage.openPage()

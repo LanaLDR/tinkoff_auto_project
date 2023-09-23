@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -16,6 +17,7 @@ import java.util.stream.Stream;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
+@Tag("mainPage")
 public class MainPageTests extends TestBase {
 
     MainPage mainPage = new MainPage();
@@ -31,6 +33,7 @@ public class MainPageTests extends TestBase {
     }
 
     @DisplayName("Ссылки на личные кабинеты кликабельны")
+    @Tag("smoke")
     @MethodSource("personalAccountLinks")
     @ParameterizedTest(name = "Проверка ссылки с селектором: {0}")
     void linksToPersonalAccountsAreClickable(SelenideElement personalAccountLink) {
