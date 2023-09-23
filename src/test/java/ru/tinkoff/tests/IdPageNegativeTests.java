@@ -20,8 +20,9 @@ public class IdPageNegativeTests extends TestBase {
         TestData testData = new TestData();
         return Stream.of(
                 Arguments.of(testData.randomShortWrongPhone),
+                Arguments.of(testData.randomLongWrongPhone),
                 //Умышленно оставляю неработающий параметр, чтобы была демонстрация в Allure
-                Arguments.of(testData.randomLongWrongPhone)
+                Arguments.of(testData.randomCorrectPhone)
         );
     }
 
