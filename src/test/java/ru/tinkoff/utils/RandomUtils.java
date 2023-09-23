@@ -14,7 +14,7 @@ public class RandomUtils {
     }
 
     public String getLongWrongPhone() {
-        return "+7"+fakerRu.numerify("############");
+        return "+7"+fakerRu.numerify("#############");
     }
 
     public String getCorrectPhone() {

@@ -1,12 +1,10 @@
 package ru.tinkoff.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.selector.ByText;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -15,11 +13,10 @@ public class IdPage {
             formTitle = $("[automation-id = 'form-title']"),
             phoneInput = $("[automation-id = 'phone-input']"),
             submitButton = $("[automation-id = 'button-submit']"),
-            loginErrorMessage = $("[automation-id = 'server-error']")
-                    .$(byText("Введен неверный номер телефона")),
+            loginErrorMessage = $("[automation-id = 'server-error']"),
             checkSmsFormTitle = $("[automation-id = 'form-title']"),
-            smsErrorMessage = $("[automation-id = 'server-error']")
-                    .$(byText("Введен неверный код"));
+            smsCodeInput = $("[automation-id = 'otp-input']"),
+            smsErrorMessage = $("[automation-id = 'server-error']");
 
     @Step("Отрываем страницу")
     public IdPage openPage() {
@@ -47,19 +44,25 @@ public class IdPage {
 
     @Step("Проверяем, что сообщение о некорректном номере отобразилось")
     public IdPage loginErrorMessageIsVisible() {
-        loginErrorMessage.isDisplayed();
+        loginErrorMessage.shouldHave(text("Введен неверный номер телефона")).shouldBe(visible);
         return this;
     }
 
     @Step("Проверяем, что страница ввода смс открылась")
     public IdPage checkSmsFormIsVisible() {
-        checkSmsFormTitle.shouldHave(text("Введите код")).isDisplayed();
+        checkSmsFormTitle.shouldHave(text("Введите код")).shouldBe(visible);
         return this;
     }
 
     @Step("Проверяем, что сообщение о некорректном смс отобразилось")
     public IdPage smsErrorMessageIsVisible() {
-        smsErrorMessage.isDisplayed();
+        smsErrorMessage.shouldHave(text("Введен неверный код")).shouldBe(visible);
+        return this;
+    }
+
+    @Step("Вводим код из смс")
+    public IdPage setSmsCode(String smsCode) {
+        smsCodeInput.setValue(smsCode);
         return this;
     }
 

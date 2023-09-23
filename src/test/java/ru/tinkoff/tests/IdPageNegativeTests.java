@@ -5,15 +5,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import ru.tinkoff.pages.IdPage;
-import ru.tinkoff.pages.MainPage;
 import ru.tinkoff.utils.TestData;
 
 import java.util.stream.Stream;
 
-import static com.codeborne.selenide.Selenide.sleep;
-import static io.qameta.allure.Allure.step;
 
 public class IdPageNegativeTests extends TestBase {
 
@@ -24,6 +20,7 @@ public class IdPageNegativeTests extends TestBase {
         TestData testData = new TestData();
         return Stream.of(
                 Arguments.of(testData.randomShortWrongPhone),
+                //Умышленно оставляю неработающий параметр, чтобы была демонстрация в Allure
                 Arguments.of(testData.randomLongWrongPhone)
         );
     }
@@ -44,6 +41,7 @@ public class IdPageNegativeTests extends TestBase {
         idPage.openPage()
                 .setCorrectPhoneAndSubmit(testData.randomCorrectPhone)
                 .checkSmsFormIsVisible()
+                .setSmsCode(testData.randomWrongSmsCode)
                 .smsErrorMessageIsVisible();
     }
 }
