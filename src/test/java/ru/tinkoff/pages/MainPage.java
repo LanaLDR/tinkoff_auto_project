@@ -13,7 +13,8 @@ public class MainPage {
             webBankLoginButton = $("[data-test='login-first']"),
             businessLoginButton = $("[data-test='login-second']"),
             investmentsLoginButton = $("[data-test='login-third']"),
-            searchAutoCompleteInput = $("[data-qa-type='uikit/inputAutocomplete.value.input']");
+            searchAutoCompleteInput = $("[data-qa-type='uikit/inputAutocomplete.value.input']"),
+            langEnglishSwitcher = $("[data-qa-file='Lang");
 
     private ElementsCollection quickSearchMessageButtons = $$("[data-qa-type='search-tag']");
 
@@ -51,6 +52,12 @@ public class MainPage {
     @Step("Кликаем по сообщению быстрого поиска {message}")
     public MainPage clickToQuickSearchMessage(SelenideElement message) {
         clickOnOverlappedElement(message);
+        return this;
+    }
+
+    @Step("Переключаемся на английскую версию")
+    public MainPage openEngVersion() {
+        clickToElement(langEnglishSwitcher);
         return this;
     }
 

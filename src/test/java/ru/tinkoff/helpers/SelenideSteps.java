@@ -11,4 +11,9 @@ public class SelenideSteps {
     public void switchToNewHandles() {
         switchTo().window(WebDriverRunner.getWebDriver().getWindowHandles().size() - 1);
     }
+
+    @Step("Получаем url текущей страницы")
+    public String getActualUrl() {
+        return WebDriverRunner.url();
+    }
 }

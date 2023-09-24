@@ -62,4 +62,17 @@ public class MainPageTests extends TestBase {
             });
         }
     }
+
+    @DisplayName("Работа кнопки открытия английской версии")
+    @Test
+    void languageChangeButtonOpenTheEngVersion() {
+        mainPage.openPage()
+                .openEngVersion();
+        selenideSteps.switchToNewHandles();
+
+        Assertions.assertEquals(
+                "https://tinkoff-group.com/",
+                selenideSteps.getActualUrl(),
+                "Текст быстрого сообщения не отобразился в поиске");
+    }
 }
