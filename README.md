@@ -46,7 +46,74 @@
 
 ## <img alt="Jenkins" height="25" src="media/logo/Jenkins.svg" width="25"/> Сборка в [Jenkins](https://jenkins.autotests.cloud/job/K-semin-tk-tinkoff-project/)
 
-
 <p align="center">  
 <img src="media/screen/Jenkins.jpeg" alt="Jenkins" width="950"/>  
+</p>
+
+## 📋 Параметры сборки в Jenkins:
+
+- _WD_HOST (URL Selenoid, по умолчанию selenoid.autotests.cloud/wd/hub)_
+- _WD_USER (User Selenoid, по умолчанию user1:1234)_
+- _TASK (Задачи, по умолчанию test)_
+- _BROWSER (Браузер, по умолчанию chrome)_
+- _BROWSER_VERSION (Версия браузера, по умолчанию 100.0)_
+- _WINDOW_SIZE (Размер окна браузера, по умолчанию 2560x1440)_
+- _QA_ENGINEER (Дежурный QA в нотификации)_
+
+---
+
+## 🚀 Команда для запуска автотестов из терминала
+
+Удаленный запуск с использованием Jenkins и Selenoid (требуется логин и пароль):
+```bash  
+./gradlew clean test -Denv=remote
+```
+
+---
+
+## <img alt="Allure" height="25" src="media/logo/Allure.svg" width="25"/> </a>Интеграция с <a target="_blank" href="https://jenkins.autotests.cloud/job/K-semin-tk-tinkoff-project/allure/">Allure Report</a>
+
+---
+
+## 🖨️ Основная страница отчёта
+
+<p align="center">  
+<img title="Allure Overview Dashboard" src="media/screen/MainReportAllure.jpeg" width="850">  
+</p>  
+
+## 📄 Тест-кейсы
+
+<p align="center">  
+<img title="Allure Tests" src="media/screen/TestCasesAllure.jpeg" width="850">   
+</p>
+
+## 📊 Графики
+
+<p align="center">   
+<img title="Allure Graphics1" src="media/screen/GraphAllure1.jpeg" width="850">  
+<img title="Allure Graphics2" src="media/screen/GraphAllure2.jpeg" width="850">  
+</p>
+
+---
+
+## <img alt="Allure_TO" height="25" src="media/logo/Allure_TO.svg" width="25"/> </a>Интеграция с <a target="_blank" href="https://allure.autotests.cloud/project/3688/dashboards">Allure TestOps</a>
+
+---
+
+## 🖨️ Основная страница отчёта
+
+<p align="center">  
+<img title="Allure TestOps Dashboard" src="media/screen/MainReportOps.jpeg" width="850">  
+</p>  
+
+## 📄 Авто и Ручные тест-кейсы
+
+<p align="center">  
+<img title="Allure Tests" src="media/screen/TestCasesOps.jpeg" width="850">  
+</p>
+
+## <img alt="Allure" height="25" src="media/logo/Jira.svg" width="25"/></a> Интеграция с <a target="_blank" href="https://jira.autotests.cloud/browse/HOMEWORK-891">Jira</a>
+
+<p align="center">  
+<img title="Jira" src="media/screen/Jira.jpeg" width="">  
 </p>
