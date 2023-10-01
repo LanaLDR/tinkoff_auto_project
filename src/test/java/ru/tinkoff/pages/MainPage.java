@@ -10,9 +10,9 @@ import static com.codeborne.selenide.Selenide.*;
 public class MainPage {
     private SelenideElement
             loginButton = $("[data-test='loginButton']"),
-            webBankLoginButton = $("[data-test='login-first']"),
-            businessLoginButton = $("[data-test='login-second']"),
-            investmentsLoginButton = $("[data-test='login-third']"),
+            webBankLoginButton = $("[data-test='clickableArea login-first']"),
+            businessLoginButton = $("[data-test='clickableArea login-second']"),
+            investmentsLoginButton = $("[data-test='clickableArea login-third']"),
             searchAutoCompleteInput = $("[data-qa-type='uikit/inputAutocomplete.value.input']"),
             langEnglishSwitcher = $("[data-qa-file='Lang");
 
