@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class WebConfigProvider {
     WebConfig webConfig = ConfigFactory.create(WebConfig.class, System.getProperties());
+
     public void setUp() {
         Configuration.browserSize = webConfig.browserSize();
         Configuration.browser = webConfig.browser();
@@ -17,7 +18,6 @@ public class WebConfigProvider {
 
         if(webConfig.isRemote()){
             Configuration.remote = webConfig.remoteDriver();
-
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                     "enableVNC", true,

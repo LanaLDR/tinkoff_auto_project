@@ -35,9 +35,16 @@ dependencies {
     )
 }
 
-test {
-    useJUnitPlatform()
+compileJava {
+    options.encoding = 'UTF-8'
+}
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Test) {
     systemProperties(System.getProperties())
+    useJUnitPlatform()
 }
 
 task smoke_test(type: Test) {
@@ -47,14 +54,12 @@ task smoke_test(type: Test) {
 }
 
 task main_page_test(type: Test) {
-    systemProperties(System.getProperties())
     useJUnitPlatform {
         includeTags("mainPage")
     }
 }
 
 task idPage_negative_test(type: Test) {
-    systemProperties(System.getProperties())
     useJUnitPlatform {
         includeTags("idPageNegative")
     }

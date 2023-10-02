@@ -2,8 +2,10 @@ package ru.tinkoff.tests;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import ru.tinkoff.config.WebConfig;
 import ru.tinkoff.config.WebConfigProvider;
 import ru.tinkoff.helpers.AttachmentAllure;
 
@@ -11,6 +13,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
 
+    WebConfig webConfig = ConfigFactory.create(WebConfig.class, System.getProperties());
     static final WebConfigProvider provider = new WebConfigProvider();
 
     @BeforeAll
@@ -24,7 +27,9 @@ public class TestBase {
         AttachmentAllure.screenshotAs("Last screenshot");
         AttachmentAllure.pageSource();
         AttachmentAllure.browserConsoleLogs();
-        AttachmentAllure.addVideo();
+        if (webConfig.isRemote()) {
+            AttachmentAllure.addVideo();
+        }
         closeWebDriver();
     }
 }

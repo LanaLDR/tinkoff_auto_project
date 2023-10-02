@@ -20,7 +20,7 @@ public class MainPage {
 
     @Step("Открываем главную страницу")
     public MainPage openPage() {
-        open("https://www.tinkoff.ru/");
+        open("/");
         return this;
     }
 
