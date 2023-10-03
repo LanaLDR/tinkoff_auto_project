@@ -30,13 +30,21 @@ dependencies {
             'org.junit.jupiter:junit-jupiter:5.9.3',
             'com.codeborne:selenide:6.18.0',
             'com.github.javafaker:javafaker:1.0.2',
-            'io.qameta.allure:allure-selenide:2.24.0'
+            'io.qameta.allure:allure-selenide:2.24.0',
+            'org.aeonbits.owner:owner:1.0.12'
     )
 }
 
-test {
-    useJUnitPlatform()
+compileJava {
+    options.encoding = 'UTF-8'
+}
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Test) {
     systemProperties(System.getProperties())
+    useJUnitPlatform()
 }
 
 task smoke_test(type: Test) {
@@ -46,14 +54,12 @@ task smoke_test(type: Test) {
 }
 
 task main_page_test(type: Test) {
-    systemProperties(System.getProperties())
     useJUnitPlatform {
         includeTags("mainPage")
     }
 }
 
 task idPage_negative_test(type: Test) {
-    systemProperties(System.getProperties())
     useJUnitPlatform {
         includeTags("idPageNegative")
     }
